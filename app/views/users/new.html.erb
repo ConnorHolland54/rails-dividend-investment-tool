@@ -1,0 +1,23 @@
+<div class="container login">
+  <section id="login-btns">
+    <button type="button" name="button" class="login-button" onclick="signIn()">Sign In</button>
+    <button type="button" name="button" class="login-button" onclick="signUp()">Sign Up</button>
+  </section>
+  <section>
+    <%= form_with url: '/login', method: :post, html: {id: 'formx'} do |form| %>
+      <%= render partial: 'sessions/form', locals: {form: form, sign_up: true} %><br>
+      <%= form.submit "Login", id: "login-btn" %>
+    <% end %>
+  </section>
+</div>
+
+<script type="text/javascript">
+  function signIn() {
+    window.location.href = "/login"
+  }
+
+  function signUp() {
+    window.location.href = "/users/new"
+  }
+
+</script>

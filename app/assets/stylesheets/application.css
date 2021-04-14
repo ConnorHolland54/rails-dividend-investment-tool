@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+
+ html,body,.container {
+     height:100%;
+ }
+  .image-setup {
+    background-image: url('nick-chong-N__BnvQ_w18-unsplash.jpg');
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  }
+ /* Login Form */
+  .login {
+    margin-top: 25px;
+    height: 370px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 25%;
+    /* margin: 25% auto; */
+    text-align: center;
+    color: lightgreen;
+  }
+  .login-setup {
+    text-align: left;
+  }
+
+  .login-button {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 25px;
+    color: lightgreen;
+  }
+
+  #login-btn {
+    width: 165px;
+    color: black;
+    background-color: lightgreen;
+  }
+
+  #login-btns {
+    display: inline;
+  }
