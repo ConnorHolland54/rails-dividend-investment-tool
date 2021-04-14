@@ -6,8 +6,8 @@
     <button type="button" name="button" class="btn btn-primary" id="add-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add a portfolio</button>
   </section>
   <section class="list-options text-center">
-    <%= @portfolios.each do |p| %>
-      <button type="button" name="button" class="option"><%= p.name %></button><br>
+    <% @portfolios.each do |p| %>
+      <%= link_to p.name, portfolio_stocks_path(p), class: "btn option" %>
     <% end %>
   </section>
 </div>
