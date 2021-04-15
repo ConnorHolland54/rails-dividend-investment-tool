@@ -8,11 +8,13 @@ class StocksController < ApplicationController
     else
       @user = nil
       @port_id = stock_params[1]
+      @stocks = current_user.portfolios.find(params[:portfolio_id]).port_stocks
+      @user_stocks = current_user.stocks
     end
   end
 
   def create
-    ticker = stock_params.upcase
+    ticker = stock_params[0].upcase
     create_stock(ticker)
   end
 

@@ -38,6 +38,15 @@
 </nav>
 <% end %>
     <!-- End of navbar -->
+
+    <% if flash[:notice] != nil %>
+        <div class="container-c alert alert-danger" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+
+
     <%= yield %>
 
 

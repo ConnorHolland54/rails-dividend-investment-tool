@@ -1,8 +1,8 @@
 <% if @user %>
 <%= form_with url: '/stocks', method: :post do |form| %>
   <%= form.label "Please Enter a ticker" %>
-  <%= form.text_field :ticker %>
-  <%= form.submit "Add" %>
+  <%= form.text_field :ticker %><br>
+  <%= form.submit "Add Stock", class: "btn btn-custom"%>
 <% end %>
 
 <% @stocks.each do |s| %>
@@ -20,11 +20,82 @@
       <%= form_with url: "/portfolios/#{@port_id}", method: :delete do |form| %>
         <%= form.submit "Delete Portfolio", class: "btn btn-danger delete-portfolio" %>
       <% end %>
-      <button type="button" name="button" class="btn btn-custom" id="add_button">Add Stocks</button>
-      <button type="button" name="button" class="btn btn-custom">Remove Stocks</button>
+      <button type="button" name="button" class="btn btn-custom" id="add_button" data-bs-toggle="modal" data-bs-target="#addStock">Add Stocks</button>
+      <button type="button" name="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#removeStocks">Remove Stocks</button>
     </div>
-    <h1>table</h1>
+    <div class="table text-center">
+                <br>
+                  <table class="table table-striped table-bordered border-custom table-light">
+                  <thead>
+                  <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Shares</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @stocks.each do |stock| %>
+                    <tr>
+                      <td><%= stock.symbol %></td>
+                      <td><%= stock.name %></td>
+                      <td id="x"><%= stock.shares %></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                  </table>
+                  </div>
   </div>
 </div>
 
+
+<!-- Add stock Modal -->
+<div class="modal fade" id="addStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: '/port_stocks', method: :post do |form|%>
+      <div class="modal-body">
+        <% @user_stocks.each do |s| %>
+          <% if !stock_exist?(@port_id.to_i, s.id) %>
+            <input type="checkbox" name="stock_ids[]" id="<%= s.id %>" value="<%= s.id %>"> <%= s.symbol %><br>
+          <% end %>
+        <% end %>
+        <input type="hidden" name="port_id" value=<%= @port_id %> >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= form.submit "Add Stocks", class: "btn btn-custom" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Remove stock Modal -->
+<div class="modal fade" id="removeStocks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: "/portfolios/#{@port_id}/stocks/remove", method: :post do |form|%>
+      <div class="modal-body">
+        <% @stocks.each do |s| %>
+            <input type="checkbox" name="stock_ids[]" id="<%= s.stock_id %>" value="<%= s.stock_id %>"> <%= s.symbol %><br>
+        <% end %>
+        <input type="hidden" name="port_id" value=<%= @port_id %> >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= form.submit "Add Stocks", class: "btn btn-custom" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <% end %>
