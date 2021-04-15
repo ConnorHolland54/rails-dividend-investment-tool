@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  post '/portfolios/:portfolio_id/stocks/remove', to: "port_stocks#remove"
+  delete '/portfolios/:portfolio_id/stocks/remove', to: "port_stocks#remove"
+  patch '/port_stocks', to: 'port_stocks#update_stock'
 end

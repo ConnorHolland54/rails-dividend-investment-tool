@@ -7,6 +7,17 @@ class PortStocksController < ApplicationController
   def remove
     remove_port_stocks
   end
+  def update_stock
+    if params[:shares] != ""
+      port_stock = PortStock.find(params[:stock_id])
+      port_stock.update(shares: params[:shares])
+      redirect_to portfolio_stocks_path(params[:port_id].to_i)
+    else
+      # error
+      flash[:notice] = "ERROR: Please enter a value for the amount of shares"
+      redirect_to portfolio_stocks_path(params[:port_id].to_i)
+    end
+  end
 
   private
 

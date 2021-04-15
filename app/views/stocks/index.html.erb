@@ -1,16 +1,14 @@
 <% if @user %>
-<%= form_with url: '/stocks', method: :post do |form| %>
-  <%= form.label "Please Enter a ticker" %>
-  <%= form.text_field :ticker %><br>
-  <%= form.submit "Add Stock", class: "btn btn-custom"%>
-<% end %>
+  <%= form_with url: '/stocks', method: :post do |form| %>
+    <%= form.label "Please Enter a ticker" %>
+    <%= form.text_field :ticker %><br>
+    <%= form.submit "Add Stock", class: "btn btn-custom"%>
+  <% end %>
 
-<% @stocks.each do |s| %>
-  <label for="" style="color: lightgreen;"><%= s.symbol %></label><br>
-<% end %>
-
+  <% @stocks.each do |s| %>
+    <label for="" style="color: lightgreen;"><%= s.symbol %></label><br>
+  <% end %>
 <% else %>
-
 <div class="" id="wrapper">
   <div class="" id="first">
     <h1>news</h1>
@@ -22,6 +20,17 @@
       <% end %>
       <button type="button" name="button" class="btn btn-custom" id="add_button" data-bs-toggle="modal" data-bs-target="#addStock">Add Stocks</button>
       <button type="button" name="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#removeStocks">Remove Stocks</button>
+      <div class="" id="update">
+        <%= form_with url: '/port_stocks', method: :patch do |form| %>
+        <%= form.hidden_field :port_id, value: @port_id %>
+        <%= form.label "Update a stock!" %><br>
+        <%= form.label "Ticker:" %><br>
+        <%= form.select :stock_id, options_from_collection_for_select(@stocks, "id", "symbol"), class: "btn btn-primary" %><br>
+        <%= form.label "Amount:" %><br>
+        <%= form.number_field :shares %>
+        <%= form.submit "Update", class: "btn btn-custom" %>
+        <% end %>
+      </div>
     </div>
     <div class="table text-center">
                 <br>
@@ -83,7 +92,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <%= form_with url: "/portfolios/#{@port_id}/stocks/remove", method: :post do |form|%>
+      <%= form_with url: "/portfolios/#{@port_id}/stocks/remove", method: :delete do |form|%>
       <div class="modal-body">
         <% @stocks.each do |s| %>
             <input type="checkbox" name="stock_ids[]" id="<%= s.stock_id %>" value="<%= s.stock_id %>"> <%= s.symbol %><br>

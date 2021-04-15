@@ -159,3 +159,7 @@ label {
 .delete-portfolio {
   float: right;
 }
+
+#update {
+  margin-top: 10px;
+}
