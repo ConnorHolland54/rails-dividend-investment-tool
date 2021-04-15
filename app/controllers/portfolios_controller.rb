@@ -13,12 +13,24 @@ class PortfoliosController < ApplicationController
     if portfolio.save
       redirect_to user_portfolios_path(user_id)
     else
-
     end
+  end
+
+  def destroy
+    portfolio = current_user.portfolios.find_by_id(destroy_params.to_i)
+    if portfolio.destroy
+      redirect_to user_portfolios_path(current_user.id)
+    else
+      # Flash error
+    end
+
   end
 
   private
   def new_port_params
     params.values_at(:name, :user_id)
+  end
+  def destroy_params
+    params.fetch(:id)
   end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :portfolios do
     resources :stocks, only: [:index]
   end
+
   resources :users do
     resources :portfolios
     resources :stocks

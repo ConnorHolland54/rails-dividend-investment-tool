@@ -140,3 +140,22 @@ div.page {
     height: 85%;
     margin-top: 2%;
 }
+
+label {
+  color: lightgreen;
+}
+
+/* Buttons */
+
+.btn-custom {
+  background-color: lightgreen;
+  color: black;
+}
+
+#add_button {
+  margin-right: 5px;
+}
+
+.delete-portfolio {
+  float: right;
+}
