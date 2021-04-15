@@ -135,7 +135,6 @@ div.page {
 }
 #second {
     float: left; /* add this */
-    background-color: teal;
     width: 75%;
     height: 85%;
     margin-top: 2%;
@@ -153,13 +152,30 @@ label {
 }
 
 #add_button {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .delete-portfolio {
-  float: right;
+  float: left;
+  margin-right: 10px;
 }
 
 #update {
   margin-top: 10px;
+}
+
+#amount {
+  color: lightgreen;
+
+}
+
+/* stocks table */
+.my-custom-scrollbar {
+margin-top: 10px;
+position: relative;
+height: 40%;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }

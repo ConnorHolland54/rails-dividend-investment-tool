@@ -10,6 +10,7 @@ class StocksController < ApplicationController
       @port_id = stock_params[1]
       @stocks = current_user.portfolios.find(params[:portfolio_id]).port_stocks
       @user_stocks = current_user.stocks
+      @amount = dividend_amount(@stocks)
     end
   end
 
@@ -24,6 +25,15 @@ class StocksController < ApplicationController
       return true
     end
     return false
+  end
+
+  def dividend_amount(stocks)
+    amount = 0
+    stocks.each do |s|
+      stock = Stock.find(s.stock_id)
+      amount += stock.dividend_per_share.to_f * s.shares
+    end
+    return amount
   end
 
 
