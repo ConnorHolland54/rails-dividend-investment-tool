@@ -112,3 +112,31 @@ div.page {
   color: black;
   border-width: 7px;
 }
+
+/* port info */
+#page {
+  height: 100%;
+  width: 100%;
+}
+
+#wrapper {
+    width: 90%;
+    overflow: hidden; /* add this to contain floated children */
+    height: 100%;
+}
+#first {
+    float:left; /* add this */
+    width: 20%;
+    background-color: white;
+    margin-right: 3%;
+    height: 85%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+#second {
+    float: left; /* add this */
+    background-color: teal;
+    width: 75%;
+    height: 85%;
+    margin-top: 2%;
+}
