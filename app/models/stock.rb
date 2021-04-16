@@ -3,6 +3,4 @@ class Stock < ApplicationRecord
   has_many :portfolios, through: :port_stocks
   belongs_to :user
 
-  def create_stock
-  end
 end

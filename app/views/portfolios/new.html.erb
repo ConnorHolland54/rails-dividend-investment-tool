@@ -1,0 +1,12 @@
+
+<section class="container" id="new-port">
+  <h2 style="color: lightgreen;">Please enter a name:</h2>
+  <%= form_with url: "/users/#{@user_id}/portfolios", method: :post do |form| %>
+  <div class="<%= 'field_with_errors' if @portfolio.errors.any? %>">
+    <%= form.label "Name:" %>
+    <%= form.text_field :name %><br>
+  </div>
+  <%= form.submit "Create", class: "btn btn-custom" %>
+  <% end %>
+
+</section>

@@ -8,11 +8,13 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    user_id = new_port_params[1].to_i
-    portfolio = Portfolio.new(name: new_port_params[0], user_id: user_id)
-    if portfolio.save
-      redirect_to user_portfolios_path(user_id)
+    @user_id = new_port_params[1].to_i
+    @portfolio = Portfolio.new(name: new_port_params[0], user_id: @user_id)
+    if @portfolio.save
+      redirect_to user_portfolios_path(@user_id)
     else
+      flash[:notice] = @portfolio.errors.full_messages.first
+      render :new
     end
   end
 
@@ -23,7 +25,11 @@ class PortfoliosController < ApplicationController
     else
       # Flash error
     end
+  end
 
+  def new
+    @user_id = new_port_params[1].to_i
+    @portfolio = Portfolio.new
   end
 
   private

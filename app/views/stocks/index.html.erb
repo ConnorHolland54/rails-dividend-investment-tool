@@ -9,11 +9,8 @@
     <label for="" style="color: lightgreen;"><%= s.symbol %></label><br>
   <% end %>
 <% else %>
-<div class="" id="wrapper">
-  <div class="" id="first">
-    <h1>news</h1>
-  </div>
-  <div class="" id="second">
+<!-- <div class="" id="wrapper"> -->
+  <div class="" id="second" class="">
     <div class="">
       <%= form_with url: "/portfolios/#{@port_id}", method: :delete do |form| %>
         <%= form.submit "Delete Portfolio", class: "btn btn-danger delete-portfolio" %>
@@ -34,7 +31,7 @@
     </div>
     <div class="table text-center my-custom-scrollbar">
                 <br>
-                  <table class="table table-striped table-bordered border-custom table-light">
+                  <table class="table table-striped table-bordered border-custom table-dark table-bordered border-custom">
                   <thead>
                   <tr>
                     <th scope="col">Symbol</th>
@@ -53,9 +50,9 @@
                   </tbody>
                   </table>
                   </div>
-                  <h2 id="amount">Expected Yearly Dividends: $<%= @amount %></h2>
+                    <h2 id="amount">Expected Yearly Dividends: $<%= @amount %></h2>
   </div>
-</div>
+<!-- </div> -->
 
 
 <!-- Add stock Modal -->
@@ -102,7 +99,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= form.submit "Add Stocks", class: "btn btn-custom" %>
+        <%= form.submit "Remove Stocks", class: "btn btn-custom" %>
       </div>
       <% end %>
     </div>
