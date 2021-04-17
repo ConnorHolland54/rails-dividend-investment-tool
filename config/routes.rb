@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   delete '/portfolios/:portfolio_id/stocks/remove', to: "port_stocks#remove"
   patch '/port_stocks', to: 'port_stocks#update_stock'
+
+  get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
 end

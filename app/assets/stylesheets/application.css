@@ -197,3 +197,12 @@ display: block;
   height: 60%;
   margin-top: 2%;
 }
+
+#facebook-btn {
+  margin-top: 24px;
+}
+
+#fb-btn {
+  background-color: #385693;
+  color: white;
+}
