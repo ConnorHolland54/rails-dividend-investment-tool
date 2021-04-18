@@ -1,0 +1,11 @@
+<br>
+<%= form_with url: '/stocks', method: :post do |form| %>
+  <%= form.label "Please Enter a ticker" %>
+  <%= form.text_field :ticker %><br>
+  <%= form.submit "Add Stock", class: "btn btn-custom"%>
+<% end %><br>
+<% @stocks.each do |s| %>
+  <%= form_with url: "/stocks/#{s.id}", method: :delete do |form| %>
+  <button type="button" name="button" class="btn btn-custom stocks_list"><%= s.symbol %></button><%= form.submit "Remove", class: "btn btn-danger stock-list-rmv" %><br><br>
+  <% end %>
+<% end %>

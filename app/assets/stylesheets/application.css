@@ -206,3 +206,16 @@ display: block;
   background-color: #385693;
   color: white;
 }
+#stock-remove {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 2%;
+}
+
+.stocks_list {
+  margin-left: 2%;
+}
+
+.stock-list-rmv {
+  margin-left: 20px;
+}

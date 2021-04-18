@@ -20,6 +20,12 @@ class StocksController < ApplicationController
     create_stock(ticker)
   end
 
+  def destroy
+    stock = current_user.stocks.find(params[:id])
+    stock.destroy
+    redirect_to user_stocks_path(current_user)
+  end
+
   private
   def user?
     if params[:user_id]
