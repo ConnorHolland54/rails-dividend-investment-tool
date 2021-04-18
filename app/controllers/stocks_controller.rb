@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   include UsersHelper
+
   def index
     @port_id = stock_params[1]
     if user?
@@ -8,7 +9,7 @@ class StocksController < ApplicationController
     else
       @user = nil
       @port_id = stock_params[1]
-      @stocks = current_user.portfolios.find(params[:portfolio_id]).port_stocks
+      @stocks = current_user.portfolios.find(params[:portfolio_id]).port_stocks.order_by_shares
       @user_stocks = current_user.stocks
       @amount = dividend_amount(@stocks)
     end
