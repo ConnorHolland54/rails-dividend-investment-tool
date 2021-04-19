@@ -10,6 +10,8 @@ class UsersController < ApplicationController
       redirect_to portfolios_path
     else
       # Flash Error
+      flash[:notice] = "Error: One or more fields are empty."
+      render :new
     end
   end
 

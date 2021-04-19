@@ -21,6 +21,8 @@ Setting up the facebook authentication:
 9) click settings and then basic and you should see the app id and app secret.
 10) Head to your env file and make a FACEBOOK_APP_ID, FACEBOOK_APP_SECRET and set those to the app id and secret.
 
+Also, make sure to run rails db:migrate to create the database tables.
+
 Running the App: In order to run the app you will need to run rails s to start up the rails server.
 
 Once done, you should be able to see the login page in which you can either sign up or login.
