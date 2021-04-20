@@ -17,7 +17,12 @@ class StocksController < ApplicationController
 
   def create
     ticker = stock_params[0].upcase
-    create_stock(ticker)
+    if !ticker.empty?
+      create_stock(ticker)
+    else
+      flash[:notice] = "Please enter a ticker symbol"
+      redirect_to user_stocks_path(current_user)
+    end
   end
 
   def destroy

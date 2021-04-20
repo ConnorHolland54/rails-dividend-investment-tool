@@ -148,7 +148,7 @@ div.page {
     margin-right: 2%;
 }
 
-label {
+label, h3 {
   color: lightgreen;
 }
 
