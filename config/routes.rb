@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :port_stocks
   resources :stocks
   resources :portfolios do
-    resources :stocks, only: [:index]
+    resources :stocks, only: [:index, :new]
   end
 
   resources :users do

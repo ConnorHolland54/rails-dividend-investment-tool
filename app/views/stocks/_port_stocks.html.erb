@@ -4,6 +4,9 @@
       <%= form_with url: "/portfolios/#{@port_id}", method: :delete do |form| %>
         <%= form.submit "Delete Portfolio", class: "btn btn-danger delete-portfolio" %>
       <% end %>
+      <%= form_with url: new_portfolio_stock_path, method: :get do |form| %>
+        <%= form.submit "Add New Stock", class: "btn btn-custom delete-portfolio" %>
+      <% end %>
       <button type="button" name="button" class="btn btn-custom" id="add_button" data-bs-toggle="modal" data-bs-target="#addStock">Add Stocks</button>
       <button type="button" name="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#removeStocks">Remove Stocks</button>
       <div class="" id="update">

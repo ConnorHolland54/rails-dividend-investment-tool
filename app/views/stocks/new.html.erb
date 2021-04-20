@@ -1,0 +1,7 @@
+
+<%= form_with url: stocks_path, method: :post do |f| %>
+  <%= f.hidden_field :portfolio_id, value: @port_id %>
+  <%= f.label "Enter a ticker" %><br>
+  <%= f.text_field :ticker%><br>
+  <%= f.submit "Add", class: "btn btn-custom" %>
+<% end %>
